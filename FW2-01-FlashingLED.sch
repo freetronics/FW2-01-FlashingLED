@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -255,6 +255,20 @@ chip</description>
 <text x="-2.54" y="1.27" size="0.4064" layer="25">&gt;Name</text>
 <text x="-2.794" y="-0.762" size="1.016" layer="21">&gt;Value</text>
 </package>
+<package name="AXIAL-0.4-LARGE">
+<wire x1="-3.048" y1="1.016" x2="3.048" y2="1.016" width="0.2032" layer="21"/>
+<wire x1="3.048" y1="1.016" x2="3.048" y2="0" width="0.2032" layer="21"/>
+<wire x1="3.048" y1="0" x2="3.048" y2="-1.016" width="0.2032" layer="21"/>
+<wire x1="3.048" y1="-1.016" x2="-3.048" y2="-1.016" width="0.2032" layer="21"/>
+<wire x1="-3.048" y1="-1.016" x2="-3.048" y2="0" width="0.2032" layer="21"/>
+<wire x1="-3.048" y1="0" x2="-3.048" y2="1.016" width="0.2032" layer="21"/>
+<wire x1="3.048" y1="0" x2="3.81" y2="0" width="0.2032" layer="21"/>
+<wire x1="-3.048" y1="0" x2="-3.81" y2="0" width="0.2032" layer="21"/>
+<pad name="P$1" x="-5.08" y="0" drill="0.9" diameter="1.778"/>
+<pad name="P$2" x="5.08" y="0" drill="0.9" diameter="1.778"/>
+<text x="-2.54" y="1.27" size="0.4064" layer="25">&gt;Name</text>
+<text x="-2.794" y="-0.762" size="1.016" layer="21">&gt;Value</text>
+</package>
 </packages>
 <symbols>
 <symbol name="FREETRONICS_RESISTOR">
@@ -340,6 +354,15 @@ Basic schematic elements and footprints for 0603, 1206, and PTH 1/10th watt (sma
 </technologies>
 </device>
 <device name="PTH2" package="FREETRONICS_AXIAL-0.4">
+<connects>
+<connect gate="G$1" pin="1" pad="P$1"/>
+<connect gate="G$1" pin="2" pad="P$2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="PTH3" package="AXIAL-0.4-LARGE">
 <connects>
 <connect gate="G$1" pin="1" pad="P$1"/>
 <connect gate="G$1" pin="2" pad="P$2"/>
@@ -537,6 +560,21 @@ Basic schematic elements and footprints for 0603, 1206, and PTH 1/10th watt (sma
 <text x="-1.27" y="-3.175" size="1.27" layer="27">&gt;VALUE</text>
 <rectangle x1="-0.254" y1="-0.254" x2="0.254" y2="0.254" layer="51"/>
 </package>
+<package name="LED5MMLARGE">
+<wire x1="2.54" y1="-1.905" x2="2.54" y2="1.905" width="0.2032" layer="21"/>
+<wire x1="2.54" y1="-1.905" x2="2.54" y2="1.905" width="0.254" layer="21" curve="-286.260205" cap="flat"/>
+<wire x1="-1.143" y1="0" x2="0" y2="1.143" width="0.1524" layer="51" curve="-90" cap="flat"/>
+<wire x1="0" y1="-1.143" x2="1.143" y2="0" width="0.1524" layer="51" curve="90" cap="flat"/>
+<wire x1="-1.651" y1="0" x2="0" y2="1.651" width="0.1524" layer="51" curve="-90" cap="flat"/>
+<wire x1="0" y1="-1.651" x2="1.651" y2="0" width="0.1524" layer="51" curve="90" cap="flat"/>
+<wire x1="-2.159" y1="0" x2="0" y2="2.159" width="0.1524" layer="51" curve="-90" cap="flat"/>
+<wire x1="0" y1="-2.159" x2="2.159" y2="0" width="0.1524" layer="51" curve="90" cap="flat"/>
+<circle x="0" y="0" radius="2.54" width="0.1524" layer="21"/>
+<pad name="A" x="-1.27" y="0" drill="0.8128" diameter="1.6764"/>
+<pad name="K" x="1.27" y="0" drill="0.8128" diameter="1.6764"/>
+<text x="3.175" y="0.5334" size="1.27" layer="25" ratio="10">&gt;NAME</text>
+<text x="3.2004" y="-1.8034" size="1.27" layer="27" ratio="10">&gt;VALUE</text>
+</package>
 </packages>
 <symbols>
 <symbol name="BJTNPN">
@@ -682,6 +720,15 @@ Standard schematic elements and footprints for 5mm, 3mm, 1206, and 0603 sized LE
 <connects>
 <connect gate="G$1" pin="A" pad="A"/>
 <connect gate="G$1" pin="C" pad="C"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="5MML" package="LED5MMLARGE">
+<connects>
+<connect gate="G$1" pin="A" pad="A"/>
+<connect gate="G$1" pin="C" pad="K"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -6152,18 +6199,18 @@ diameter 5 mm, grid 2.54 mm</description>
 </class>
 </classes>
 <parts>
-<part name="LED1" library="freetronics-master-v1.1" deviceset="LED" device="5MM"/>
-<part name="Q2" library="freetronics-master-v1.1" deviceset="BC547" device=""/>
+<part name="LED1" library="freetronics-master-v1.1" deviceset="LED" device="5MML"/>
+<part name="Q2" library="freetronics-master-v1.1" deviceset="BC547" device="" value="BC548"/>
 <part name="JP1" library="freetronics-master-v1.1" deviceset="M01" device="PTH" value="PWR+"/>
 <part name="JP2" library="freetronics-master-v1.1" deviceset="M01" device="PTH" value="PWR-"/>
 <part name="C2" library="adafruit" deviceset="CPOL-US" device="E5-5" value="2.2uF"/>
-<part name="R1" library="freetronics" deviceset="FREETRONICS_RESISTOR" device="PTH2" value="330R"/>
-<part name="Q1" library="freetronics-master-v1.1" deviceset="BC547" device=""/>
-<part name="R2" library="freetronics" deviceset="FREETRONICS_RESISTOR" device="PTH2" value="47K"/>
-<part name="R3" library="freetronics" deviceset="FREETRONICS_RESISTOR" device="PTH2" value="47K"/>
-<part name="R4" library="freetronics" deviceset="FREETRONICS_RESISTOR" device="PTH2" value="330R"/>
+<part name="R1" library="freetronics" deviceset="FREETRONICS_RESISTOR" device="PTH3" value="330R"/>
+<part name="Q1" library="freetronics-master-v1.1" deviceset="BC547" device="" value="BC548"/>
+<part name="R2" library="freetronics" deviceset="FREETRONICS_RESISTOR" device="PTH3" value="47K"/>
+<part name="R3" library="freetronics" deviceset="FREETRONICS_RESISTOR" device="PTH3" value="47K"/>
+<part name="R4" library="freetronics" deviceset="FREETRONICS_RESISTOR" device="PTH3" value="330R"/>
 <part name="C1" library="adafruit" deviceset="CPOL-US" device="E5-5" value="10uF"/>
-<part name="LED2" library="freetronics-master-v1.1" deviceset="LED" device="5MM"/>
+<part name="LED2" library="freetronics-master-v1.1" deviceset="LED" device="5MML"/>
 </parts>
 <sheets>
 <sheet>
@@ -6192,14 +6239,20 @@ diameter 5 mm, grid 2.54 mm</description>
 <text x="152.4" y="86.36" size="3.81" layer="97" ratio="15">-</text>
 </plain>
 <instances>
-<instance part="LED1" gate="G$1" x="78.74" y="121.92"/>
+<instance part="LED1" gate="G$1" x="78.74" y="121.92" smashed="yes">
+<attribute name="NAME" x="82.296" y="117.348" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="84.455" y="117.348" size="1.778" layer="96" rot="R90"/>
+</instance>
 <instance part="Q2" gate="G$1" x="127" y="81.28" smashed="yes">
 <attribute name="NAME" x="121.92" y="83.82" size="1.778" layer="95"/>
 <attribute name="VALUE" x="119.38" y="86.36" size="1.778" layer="96"/>
 </instance>
 <instance part="JP1" gate="G$1" x="149.86" y="127" rot="R180"/>
 <instance part="JP2" gate="G$1" x="149.86" y="73.66" rot="R180"/>
-<instance part="C2" gate="G$1" x="121.92" y="96.52" rot="R270"/>
+<instance part="C2" gate="G$1" x="121.92" y="96.52" smashed="yes" rot="R270">
+<attribute name="NAME" x="119.634" y="99.695" size="1.778" layer="95"/>
+<attribute name="VALUE" x="117.856" y="91.821" size="1.778" layer="96"/>
+</instance>
 <instance part="R1" gate="G$1" x="78.74" y="106.68" smashed="yes" rot="R90">
 <attribute name="NAME" x="77.2414" y="105.41" size="1.778" layer="95" rot="R90"/>
 <attribute name="VALUE" x="82.042" y="105.41" size="1.778" layer="96" rot="R90"/>
@@ -6220,8 +6273,14 @@ diameter 5 mm, grid 2.54 mm</description>
 <attribute name="NAME" x="128.0414" y="105.41" size="1.778" layer="95" rot="R90"/>
 <attribute name="VALUE" x="132.842" y="105.41" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="C1" gate="G$1" x="86.36" y="96.52" rot="R90"/>
-<instance part="LED2" gate="G$1" x="129.54" y="121.92"/>
+<instance part="C1" gate="G$1" x="86.36" y="96.52" smashed="yes" rot="R90">
+<attribute name="NAME" x="85.852" y="99.695" size="1.778" layer="95"/>
+<attribute name="VALUE" x="84.836" y="91.821" size="1.778" layer="96"/>
+</instance>
+<instance part="LED2" gate="G$1" x="129.54" y="121.92" smashed="yes">
+<attribute name="NAME" x="133.096" y="117.348" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="135.255" y="117.348" size="1.778" layer="96" rot="R90"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -6321,6 +6380,10 @@ diameter 5 mm, grid 2.54 mm</description>
 </nets>
 </sheet>
 </sheets>
+<errors>
+<approved hash="113,1,79.0617,120.65,LED1,,,,,"/>
+<approved hash="113,1,129.862,120.65,LED2,,,,,"/>
+</errors>
 </schematic>
 </drawing>
 </eagle>
